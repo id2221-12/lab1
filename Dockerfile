@@ -20,6 +20,7 @@ COPY core-site.xml $HADOOP_CONFIG/core-site.xml
 COPY hdfs-site.xml $HADOOP_CONFIG/hdfs-site.xml
 COPY hbase-site.xml $HBASE_CONF/hbase-site.xml
 COPY start_daemon.sh /root/
+COPY src /root/
 
 RUN chmod +x /root/start_daemon.sh
 RUN $HADOOP_HOME/bin/hdfs namenode -format
