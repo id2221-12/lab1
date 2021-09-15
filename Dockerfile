@@ -15,15 +15,18 @@ ENV PATH=$HBASE_HOME/bin:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
 
 RUN echo 'export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"' >> $HADOOP_CONFIG/hadoop-env.sh && mkdir -p $HADOOP_HOME/hdfs/namenode && mkdir -p $HADOOP_HOME/hdfs/datanode
 RUN echo 'export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"' >> $HBASE_CONF/hbase-env.sh && mkdir -p $HBASE_HOME/zookeeper
+RUN echo 'export HBASE_SSH_OPTS="-p 22 -l root"' >> $HBASE_CONF/hbase-env.sh
+RUN echo 'export HBASE_OPTS="$HBASE_OPTS -XX:+UseConcMarkSweepGC"' >> $HBASE_CONF/hbase-env.sh
 
 COPY core-site.xml $HADOOP_CONFIG/core-site.xml
 COPY hdfs-site.xml $HADOOP_CONFIG/hdfs-site.xml
 COPY hbase-site.xml $HBASE_CONF/hbase-site.xml
 COPY start_daemon.sh /root/
-COPY src /root/
+COPY src_hbase /root/src_hbase/
+COPY src_hadoop /root/src_hadoop/
 
 RUN chmod +x /root/start_daemon.sh
 RUN $HADOOP_HOME/bin/hdfs namenode -format
 
-
+WORKDIR /root/
 ENTRYPOINT ["/bin/bash"]
