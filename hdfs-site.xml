@@ -23,12 +23,12 @@ limitations under the License. See accompanying LICENSE file.
 	</property>
 	<property>
 		<name>dfs.namenode.name.dir</name>
-		<value>file:///root/hadoop-3.2.2/hdfs/namenode</value>
+		<value>file:///root/hadoop-3.1.2/hdfs/namenode</value>
 		<description>Path on the local filesystem ...</description>
 	</property>
 	<property>
 		<name>dfs.datanode.data.dir</name>
-		<value>file:///root/hadoop-3.2.2/hdfs/datanode</value>
+		<value>file:///root/hadoop-3.1.2/hdfs/datanode</value>
 		<description>Comma separated list of paths on the local filesystem ...</description>
 	</property>
 

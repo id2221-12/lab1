@@ -49,15 +49,7 @@
   </property>
   <property>
     <name>hbase.zookeeper.property.dataDir</name>
-    <value>/root/hbase-2.3.6/zookeeper</value>
-  </property>
-    <property>
-    <name>hbase.tmp.dir</name>
-    <value>./tmp</value>
-  </property>
-  <property>
-    <name>hbase.unsafe.stream.capability.enforce</name>
-    <value>false</value>
+    <value>/root/hbase-1.4.10/zookeeper</value>
   </property>
 </configuration>
 
