@@ -40,7 +40,7 @@ object Main extends Serializable {
   
   def sizeGTAvg(logs: RDD[Log]) = { // 7
     val (_, _, avg) = Main.minMaxAvg(logs)
-    logs.filter(x => x.size > avg)
+    logs.filter(x => x.size > avg) foreach println
   }
 
   def pageviewsByProject(logs: RDD[Log]) = { // 8
