@@ -8,6 +8,7 @@ ENV SPARK_HOME="/root/spark-2.4.3-bin-hadoop2.7/"
 ENV PATH=$SPARK_HOME/bin:$JAVA_HOME/bin:$PATH
 COPY pagecounts-20160101-000000_parsed.out /root/
 COPY main.scala /root/
+COPY sql.scala /root/
 
 WORKDIR /root/
 ENTRYPOINT ["/bin/bash"]

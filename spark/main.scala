@@ -16,7 +16,7 @@ object Main extends Serializable {
 
   def count(logs: RDD[Log]) = println(logs.count()) // 2
 
-  def minMazAvg(logs: RDD[Log]) = { // 3
+  def minMaxAvg(logs: RDD[Log]) = { // 3
     val sizes = logs.map(x => x.size)
     val max = sizes.max
     val min = sizes.min
@@ -48,7 +48,7 @@ object Main extends Serializable {
   }
 
   def top10PageviewsByProject(logs: RDD[Log]) = { // 9
-    logs.keyBy(x => x.code).groupByKey().mapValues(ls => ls.map(x => x.hits).sum).sortBy((_,hits) => hits).take(10) foreach println
+    logs.keyBy(x => x.code).groupByKey().mapValues(ls => ls.map(x => x.hits).sum).sortBy({case (_,hits) => hits}).take(10) foreach println
   }
 
   def countNonEnglishThe(logs: RDD[Log]) = logs.filter(l => l.title.startsWith("The") && !l.code.startsWith("en")).count // 10    
