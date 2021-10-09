@@ -90,7 +90,11 @@ object GraphX {
       t => {t.sendToDst(t.srcAttr)},
       { case (a@User(_, age1), b@User(_, age2)) => { if (age1 > age2) a else b } }
     )
-    rels5.collect.foreach(println)
+    val rels6 = graph.outerJoinVertices(rels5)((id, u, oldest) => (u, oldest)).vertices
+    rels6.collect.foreach { 
+      case (_,(User(name,_), Some(User(othername,age)))) => println(s"$name's oldest follower: $othername, $age")
+      case _ => 
+    } 
 
     sc.stop()
   }
